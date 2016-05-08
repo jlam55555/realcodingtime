@@ -1,3 +1,4 @@
+"use strict";
 $(() => {
   // elements
   let console = $("pre#console");
