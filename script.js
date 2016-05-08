@@ -6,14 +6,14 @@ $(() => {
   
   // accessory functions
   let msg = m => consoleElem.append("\n" + m);
-  let setCode = code => codeElem.html(code.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/==NEWLINE==/g, "\n"));
+  let setCode = code => codeElem.html(code.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
   
   // socket.io
   let socket = io.connect("http://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("Successfully connected to server.");
     codeElem.on("input", () => {
-      socket.emit("codeUpdate", codeElem[0].innerText.replace(/\n/g, "==NEWLINE=="));
+      socket.emit("codeUpdate", codeElem[0].innerText);
     });
     socket.on("code", code => {
       setCode(code);
