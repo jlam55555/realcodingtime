@@ -3,6 +3,7 @@ $(() => {
   // elements
   let consoleElem = $("pre#console");
   let codeElem = $("textarea#code");
+  let codeReplicaElem = $("pre#codeReplica");
   
   // accessory functions
   let msg = m => consoleElem.append("\n" + m);
@@ -12,7 +13,10 @@ $(() => {
   let socket = io.connect("http://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("Successfully connected to server.");
-    codeElem.on("input", () => socket.emit("codeUpdate", codeElem.val()));
+    codeElem.on("input", () => {
+      socket.emit("codeUpdate", codeElem.val())
+      codeReplicaElem.html(codeElem.val());
+    });
     codeElem.on("keydown", event => {
       if(event.which == 9) {
         event.preventDefault();
