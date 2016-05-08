@@ -10,7 +10,7 @@ $(() => {
   
   // event handlers
   codeElem.on("input", () => {
-    alert($(this).val());
+    alert(codeElem.val());
   });
 
   // socket.io
