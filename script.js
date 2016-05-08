@@ -13,8 +13,7 @@ $(() => {
   socket.on("connect", () => {
     msg("Successfully connected to server.");
     codeElem.on("input", () => socket.emit("codeUpdate", codeElem[0].innerText));
-    codeElem.on("keyup", event => {
-      alert();
+    codeElem.on("keydown", event => {
       if(event.which == 9) {
         event.preventDefault();
         let elem = codeElem[0];
