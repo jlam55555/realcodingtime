@@ -1,11 +1,11 @@
 "use strict";
 $(() => {
   // elements
-  let console = $("pre#console");
+  let consoleElem = $("pre#console");
   let codeElem = $("pre#code");
   
   // accessory functions
-  let msg = m => console.append("\n" + m);
+  let msg = m => consoleElem.append("\n" + m);
   let setCode = code => codeElem.html(code.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
   
   // socket.io
@@ -13,7 +13,7 @@ $(() => {
   socket.on("connect", () => {
     msg("Successfully connected to server.");
     codeElem.on("input", () => {
-      console.log(codeElem.text().replace(/\n/g, "\\n"));
+      socket.emit("codeUpdate", codeElem.text().replace(/\n/g, "\\n"));
     });
     socket.on("code", code => {
       setCode(code);
