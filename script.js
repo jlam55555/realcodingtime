@@ -1,6 +1,6 @@
 $(() => {
   var msg = m => $("pre#console").append("\n" + m);
-  var socket = io.connect("https://real-coding-time.herokuapp.com", {"transports": ["websocket"]});
+  var socket = io.connect("http://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("32");
   });
