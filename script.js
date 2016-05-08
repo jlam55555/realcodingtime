@@ -2,24 +2,24 @@
 $(() => {
   // elements
   let consoleElem = $("pre#console");
-  let codeElem = $("pre#code");
+  let codeElem = $("textarea#code");
   
   // accessory functions
   let msg = m => consoleElem.append("\n" + m);
-  let setCode = code => codeElem.html(code.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+  let setCode = code => codeElem.val(code.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
   
   // socket.io
   let socket = io.connect("http://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("Successfully connected to server.");
-    codeElem.on("input", () => socket.emit("codeUpdate", codeElem[0].innerText));
+    codeElem.on("input", () => socket.emit("codeUpdate", codeElem.val()));
     codeElem.on("keydown", event => {
       if(event.which == 9) {
         event.preventDefault();
         let elem = codeElem[0];
         let start = elem.selectionStart;
         let end = elem.selectionEnd;
-        setCode(elem.innerText.substring(0, start) + "  " + elem.innerText.substring(end));
+        setCode(codeElem.val().substring(0, start) + "  " + codeElem.val().substring(end));
         elem.selectionStart = elem.selectionEnd = start + 1;
       }
     });
