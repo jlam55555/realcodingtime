@@ -20,7 +20,7 @@ $(() => {
         let start = elem.selectionStart;
         let end = elem.selectionEnd;
         setCode(codeElem.val().substring(0, start) + "  " + codeElem.val().substring(end));
-        elem.selectionStart = elem.selectionEnd = start + 1;
+        elem.selectionStart = elem.selectionEnd = start + 2;
       }
     });
     socket.on("code", code => {
