@@ -10,7 +10,7 @@ $(() => {
   
   // event handlers
   codeElem.on("input", () => {
-    alert(codeElem.val());
+    alert(codeElem.text().replace(/\n/g, "\\n"));
   });
 
   // socket.io
