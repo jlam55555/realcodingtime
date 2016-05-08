@@ -6,7 +6,7 @@ $(() => {
   
   // accessory functions
   let msg = m => consoleElem.append("\n" + m);
-  let setCode = code => codeElem.val(code.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+  let setCode = code => codeElem.val(code);
   
   // socket.io
   let socket = io.connect("http://real-coding-time.herokuapp.com");
