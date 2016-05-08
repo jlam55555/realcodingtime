@@ -12,8 +12,17 @@ $(() => {
   let socket = io.connect("http://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("Successfully connected to server.");
-    codeElem.on("input", () => {
-      socket.emit("codeUpdate", codeElem[0].innerText);
+    codeElem.on("input", () => socket.emit("codeUpdate", codeElem[0].innerText));
+    codeElem.on("keyup", event => {
+      alert();
+      if(event.which == 9) {
+        event.preventDefault();
+        let elem = codeElem[0];
+        let start = elem.selectionStart;
+        let end = elem.selectionEnd;
+        setCode(elem.innerText.substring(0, start) + "  " + elem.innerText.substring(end));
+        elem.selectionStart = elem.selectionEnd = start + 1;
+      }
     });
     socket.on("code", code => {
       setCode(code);
