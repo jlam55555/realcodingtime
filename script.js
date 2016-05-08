@@ -13,7 +13,7 @@ $(() => {
   socket.on("connect", () => {
     msg("Successfully connected to server.");
     codeElem.on("input", () => {
-      console.log(codeElem.text().replace(/\n/g, "\\n");
+      console.log(codeElem.text().replace(/\n/g, "\\n"));
     });
     socket.on("code", code => {
       setCode(code);
