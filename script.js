@@ -7,5 +7,8 @@ $(() => {
   socket.on("connect_error", () => {
     msg("Error connecting to server.");
   });
+  socket.on("code", code => {
+    $("pre#code").html(code);
+  });
   msg("Hello. Script loaded. Waiting for server...");
 });
