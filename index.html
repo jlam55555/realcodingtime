@@ -4,14 +4,15 @@
     <title>Hello, World!</title>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-    <script defer src="//jsfiddle.net/js/jsfiddle-post.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
     <textarea id="code"></textarea>
-    <pre id="codeReplica" data-playground-type="html" data-playground-group="code-example-1"></pre>
-    <a href="#" data-playground="jsfiddle" data-playground-from-group="code-example-1">Edit in JSFiddle</a>
+    <form id="resultForm" method="post" action="http://jsfiddle.net/api/post/library/pure/" target="_blank">
+      <textarea id="resultHtml" name="html" />
+      <button type="button" id="result">See on JSFiddle.net</button>
+    </form>
     <pre id="console"></pre>
   </body>
 </html>

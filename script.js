@@ -3,7 +3,9 @@ $(() => {
   // elements
   let consoleElem = $("pre#console");
   let codeElem = $("textarea#code");
-  let codeReplicaElem = $("pre#codeReplica");
+  let resultElem = $("button#result");
+  let resultHtml = $("textarea#resultHtml");
+  let resultForm = $("form#resultForm");
   
   // accessory functions
   let msg = m => consoleElem.append("\n" + m);
@@ -15,7 +17,6 @@ $(() => {
     msg("Successfully connected to server.");
     codeElem.on("input", () => {
       socket.emit("codeUpdate", codeElem.val())
-      codeReplicaElem.html(codeElem.val());
     });
     codeElem.on("keydown", event => {
       if(event.which == 9) {
@@ -29,6 +30,10 @@ $(() => {
     });
     socket.on("code", code => {
       setCode(code);
+    });
+    resultElem.click(() => {
+      resultHtml.val(codeElem.val());
+      resultForm.submit();
     });
   });
   socket.on("connect_error", () => {
