@@ -8,7 +8,7 @@ $(() => {
     msg("Error connecting to server.");
   });
   socket.on("code", code => {
-    $("pre#code").html(code);
+    $("pre#code").html(code.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
   });
   msg("Hello. Script loaded. Waiting for server...");
 });
