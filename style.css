@@ -6,12 +6,16 @@ body, html {
   padding: 0;
   width: 100%;
 }
-textarea#code {
+textarea#code, pre#console {
   width: 100%;
+  display: block;
+  margin: 0;
+  padding: 20px;
+}
+textarea#code {
   height: calc(100% - 100px);
 }
 pre#console {
-  width: 100%;
   height: 100px;
   background-color: black;
   color: white;
