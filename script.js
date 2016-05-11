@@ -4,8 +4,9 @@ $(() => {
   let consoleElem = $("pre#console");
   let codeElem = $("textarea#code");
   let resultElem = $("button#result");
-  let resultHtml = $("textarea#resultHtml");
+  let resultCode = $("textarea#resultCode");
   let resultForm = $("form#resultForm");
+  let colorfulCode = $("pre#colorfulCode");
   
   // accessory functions
   let msg = m => consoleElem.append("\n" + m);
@@ -30,11 +31,23 @@ $(() => {
     });
     socket.on("code", code => {
       setCode(code);
+      codeElem.trigger("input");
     });
     resultElem.click(() => {
-      resultHtml.val(codeElem.val());
+      resultCode.val(codeElem.val());
       resultForm.submit();
     });
+    let changed = false;
+    codeElem.on("input", () => {
+      colorfulCode.html(codeElem.val()).removeClass("prettyprinted");
+      changed = true;
+      prettyPrint();
+    });
+    setInterval(() => {
+      if(changed) {
+        changed = false;
+      }
+    }, 500);
   });
   socket.on("connect_error", () => {
     msg("Error connecting to server.");

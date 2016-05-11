@@ -4,13 +4,16 @@
     <title>Hello, World!</title>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="prettify.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="prettify.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <textarea id="code"></textarea>
+    <textarea id="code" spellcheck="false"></textarea>
+    <pre id="colorfulCode" class="prettyprint"></pre>
     <form id="resultForm" method="post" action="http://jsfiddle.net/api/post/library/pure/" target="_blank">
-      <textarea id="resultHtml" name="html"></textarea>
+      <textarea id="resultCode" name="js"></textarea>
       <button type="button" id="result">See on JSFiddle.net</button>
     </form>
     <pre id="console"></pre>

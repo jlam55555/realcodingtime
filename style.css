@@ -6,16 +6,37 @@ body, html {
   padding: 0;
   height: 100%;
 }
-textarea#code, pre#console {
+textarea#code, pre#colorfulCode, pre#console {
   width: 100%;
   display: block;
   margin: 0;
   padding: 20px;
+  font-family: courier new;
+  font-size: 16px;
+}
+textarea#code, pre#colorfulCode {
+  height: calc(100% - 100px);
+  overflow: hidden;
+  /* need to fix this */
 }
 textarea#code {
-  height: calc(100% - 100px);
+  background-color: transparent;
+  border: none;
+  -webkit-text-fill-color: transparent;
+  color: white;
+  outline: none;
+  resize: none;
 }
-textarea#resultHtml {
+textarea#code::-webkit-input-placeholder {
+  color: white;
+}
+pre#colorfulCode {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  border-radius: 0;
+}
+textarea#resultCode {
   display: none;
 }
 button#result {
@@ -30,6 +51,5 @@ pre#console {
   height: 100px;
   background-color: black;
   color: white;
-  font-family: courier new;
   font-weight: bold;
 }
