@@ -6,11 +6,13 @@ This is the client for the [real-coding-time](https://www.github.com/jlam55555/r
 
 ### Features
 - Socket.io (a Node.js package) websockets ensure quick, real-time 
-- See the output in [JSFiddle.net](http://www.jsfiddle.net)
+- Export as JavaScript to [JSFiddle.net](http://www.jsfiddle.net)
+- Syntax highlighting from Google's [PrettyPrint](https://github.com/google/code-prettify/)
+- Simple, modern interface
 
 ### Coming soon
-- Syntax highlighting
-- Multiple language support (exporting different languages to JSFiddle)
+- Multiple language support (exporting different languages other than JS to JSFiddle)
+- Scrolling (currently broken)
 
 ### Demo
 http://jlam55555.github.io/realcodingtime
