@@ -16,7 +16,7 @@ $(() => {
   let socket = io.connect("http://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("Successfully connected to server.");
-    codeElem.on("input", () => {
+    codeElem.on("keyup", () => {
       socket.emit("codeUpdate", codeElem.val())
     });
     codeElem.on("keydown", event => {
