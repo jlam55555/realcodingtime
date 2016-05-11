@@ -37,17 +37,10 @@ $(() => {
       resultCode.val(codeElem.val());
       resultForm.submit();
     });
-    let changed = false;
     codeElem.on("input", () => {
       colorfulCode.html(codeElem.val()).removeClass("prettyprinted");
-      changed = true;
       prettyPrint();
     });
-    setInterval(() => {
-      if(changed) {
-        changed = false;
-      }
-    }, 500);
   });
   socket.on("connect_error", () => {
     msg("Error connecting to server.");
