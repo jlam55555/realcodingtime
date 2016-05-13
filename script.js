@@ -13,7 +13,7 @@ $(() => {
   let setCode = code => codeElem.val(code);
   
   // socket.io
-  let socket = io.connect("http://real-coding-time.herokuapp.com");
+  let socket = io.connect("https://real-coding-time.herokuapp.com");
   socket.on("connect", () => {
     msg("Successfully connected to server.");
     codeElem.on("keyup", () => {
